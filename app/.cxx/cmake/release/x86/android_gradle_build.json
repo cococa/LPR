@@ -1,0 +1,87 @@
+{
+  "stringTable": {
+    "0": "F:/demo/LPR/app/.cxx/cmake/release/x86",
+    "1": "--target=i686-none-linux-android19 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig-version.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig.cmake",
+    "D:\\Sdk\\ndk-bundle\\build\\cmake\\android.toolchain.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86\\OpenCVConfig.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86\\OpenCVModules-release.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86\\OpenCVModules.cmake",
+    "D:\\Sdk\\ndk-bundle\\build\\cmake\\platforms.cmake",
+    "F:\\demo\\LPR\\app\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "lpr-Release-x86": {
+      "buildCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\x86\" lpr",
+      "buildType": "release",
+      "toolchain": "303644983",
+      "abi": "x86",
+      "artifactName": "lpr",
+      "files": [
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\javaWarpper.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\CNNRecognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FastDeskew.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FineMapping.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Pipeline.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateDetection.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateSegmentation.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Recognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\SegmentationFreeRecognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "F:\\demo\\LPR\\app\\build\\intermediates\\cmake\\release\\obj\\x86\\liblpr.so"
+    }
+  },
+  "toolchains": {
+    "303644983": {
+      "cppCompilerExecutable": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

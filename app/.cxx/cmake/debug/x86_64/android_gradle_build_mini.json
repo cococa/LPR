@@ -1,0 +1,24 @@
+{
+  "buildFiles": [
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86_64\\OpenCVConfig.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86_64\\OpenCVModules-release.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig-version.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig.cmake",
+    "D:\\Sdk\\ndk-bundle\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Sdk\\ndk-bundle\\build\\cmake\\platforms.cmake",
+    "F:\\demo\\LPR\\app\\CMakeLists.txt",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-x86_64\\OpenCVModules.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\debug\\x86_64\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\debug\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "lpr-Debug-x86_64": {
+      "artifactName": "lpr",
+      "buildCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\debug\\x86_64\" lpr",
+      "abi": "x86_64",
+      "output": "F:\\demo\\LPR\\app\\build\\intermediates\\cmake\\debug\\obj\\x86_64\\liblpr.so"
+    }
+  }
+}

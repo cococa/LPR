@@ -1,0 +1,55 @@
+[
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\javaWarpper.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\javaWarpper.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/javaWarpper.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\CNNRecognizer.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\CNNRecognizer.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/CNNRecognizer.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\FastDeskew.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FastDeskew.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/FastDeskew.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\FineMapping.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FineMapping.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/FineMapping.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\Pipeline.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Pipeline.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/Pipeline.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\PlateDetection.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateDetection.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/PlateDetection.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\PlateSegmentation.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateSegmentation.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/PlateSegmentation.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\Recognizer.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Recognizer.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/Recognizer.cpp"
+},
+
+{
+  "directory": "F:/demo/LPR/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\lpr.dir\\src\\main\\jni\\src\\SegmentationFreeRecognizer.cpp.o -c F:\\demo\\LPR\\app\\src\\main\\jni\\src\\SegmentationFreeRecognizer.cpp",
+  "file": "F:/demo/LPR/app/src/main/jni/src/SegmentationFreeRecognizer.cpp"
+}
+]

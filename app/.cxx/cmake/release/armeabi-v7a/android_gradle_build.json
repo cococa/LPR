@@ -1,0 +1,86 @@
+{
+  "stringTable": {
+    "0": "F:/demo/LPR/app/.cxx/cmake/release/armeabi-v7a",
+    "1": "--target=armv7-none-linux-androideabi --gcc-toolchain=D:/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/android-ndk-r14b/platforms/android-19/arch-arm -Dlpr_EXPORTS -I../../../../src/main/jni/include -I../../../../src/main/jni -isystem D:/OpenCV-android-sdk/sdk/native/jni/include -isystem D:/OpenCV-android-sdk/sdk/native/jni/include/opencv -isystem D:/android-ndk-r14b/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem D:/android-ndk-r14b/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -isystem D:/android-ndk-r14b/sources/cxx-stl/gnu-libstdc++/4.9/include/backward -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -std=gnu++11 -Os -DNDEBUG -Os -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi-v7a\\OpenCVConfig.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig-version.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig.cmake",
+    "D:\\android-ndk-r14b\\build\\cmake\\android.toolchain.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi-v7a\\OpenCVModules-release.cmake",
+    "F:\\demo\\LPR\\app\\CMakeLists.txt",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi-v7a\\OpenCVModules.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "lpr-Release-armeabi-v7a": {
+      "buildCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\app\\.cxx\\cmake\\release\\armeabi-v7a\" lpr",
+      "buildType": "release",
+      "toolchain": "649976208",
+      "abi": "armeabi-v7a",
+      "artifactName": "lpr",
+      "files": [
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\javaWarpper.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\CNNRecognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FastDeskew.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\FineMapping.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Pipeline.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateDetection.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\PlateSegmentation.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\Recognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "F:\\demo\\LPR\\app\\src\\main\\jni\\src\\SegmentationFreeRecognizer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "F:\\demo\\LPR\\app\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\liblpr.so"
+    }
+  },
+  "toolchains": {
+    "649976208": {
+      "cppCompilerExecutable": "D:\\android-ndk-r14b\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
