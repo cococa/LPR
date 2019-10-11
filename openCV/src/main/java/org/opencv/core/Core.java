@@ -3,15 +3,9 @@
 //
 package org.opencv.core;
 
-import java.lang.String;
-import java.util.ArrayList;
-import java.util.List;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfDouble;
-import org.opencv.core.MatOfInt;
-import org.opencv.core.Scalar;
-import org.opencv.core.TermCriteria;
 import org.opencv.utils.Converters;
+
+import java.util.List;
 
 // C++: class Core
 //javadoc: Core
@@ -2737,7 +2731,7 @@ public static MinMaxLocResult minMaxLoc(Mat src, Mat mask) {
     if (mask != null) {
         maskNativeObj=mask.nativeObj;
     }
-    double resarr[] = n_minMaxLocManual(src.nativeObj, maskNativeObj);
+    double[] resarr = n_minMaxLocManual(src.nativeObj, maskNativeObj);
     res.minVal=resarr[0];
     res.maxVal=resarr[1];
     res.minLoc.x=resarr[2];

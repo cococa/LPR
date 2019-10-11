@@ -38,10 +38,10 @@ import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.android.ActivityI;
+import com.yzq.zxinglibrary.bean.ZxingConfig;
 import com.yzq.zxinglibrary.camera.CameraManager;
 import com.yzq.zxinglibrary.common.Constant;
-
 
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
@@ -56,18 +56,18 @@ public final class DecodeHandler extends Handler {
 
     private static final String TAG = DecodeHandler.class.getSimpleName();
 
-    private final CaptureActivity activity;
+    private final ActivityI activity;
     private final MultiFormatReader multiFormatReader;
     private boolean running = true;
     long target;
     private CameraManager cameraManager;
 
-    DecodeHandler(CaptureActivity activity, CameraManager cameraManager, Map<DecodeHintType, Object> hints) {
+    DecodeHandler(ActivityI activity, CameraManager cameraManager, Map<DecodeHintType, Object> hints) {
         multiFormatReader = new MultiFormatReader();
         this.cameraManager = cameraManager;
         multiFormatReader.setHints(hints);
         this.activity = activity;
-        target = DeepAssetUtil.initRecognizer(activity);
+        target = DeepAssetUtil.initRecognizer(activity.getContext());
     }
 
 
@@ -92,11 +92,8 @@ public final class DecodeHandler extends Handler {
      * 解码
      */
     private void decode(byte[] data, int width, int height) {
-        if (activity.getMode() == 1) {
-
-            Log.e("cocoa", "cocoa ==>" + System.currentTimeMillis());
+        if (activity.getMode() == ZxingConfig.SCAN_TYPE_QRCODE) {
             Result rawResult = null;
-
             byte[] rotatedData = new byte[data.length];
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
@@ -110,8 +107,6 @@ public final class DecodeHandler extends Handler {
 
             PlanarYUVLuminanceSource source = activity.getCameraManager()
                     .buildLuminanceSource(data, width, height);
-
-
             if (source != null) {
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
@@ -123,7 +118,6 @@ public final class DecodeHandler extends Handler {
                     multiFormatReader.reset();
                 }
             }
-
             Handler handler = activity.getHandler();
             if (rawResult != null) {
 
@@ -140,7 +134,6 @@ public final class DecodeHandler extends Handler {
                 }
             }
         } else {
-
             Handler handler = activity.getHandler();
             try {
                 YuvImage image = new YuvImage(data, ImageFormat.NV21, width, height, null);
@@ -203,7 +196,6 @@ public final class DecodeHandler extends Handler {
                 Message message = Message.obtain(handler, Constant.DECODE_FAILED);
                 message.sendToTarget();
             }
-
         }
     }
 

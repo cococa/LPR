@@ -1,6 +1,7 @@
 package com.yzq.zxinglibrary.android;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
@@ -11,13 +12,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +32,6 @@ import com.yzq.zxinglibrary.decode.DecodeImgThread;
 import com.yzq.zxinglibrary.decode.ImageUtil;
 import com.yzq.zxinglibrary.view.ViewfinderView;
 
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-
 import java.io.IOException;
 
 
@@ -44,19 +41,18 @@ import java.io.IOException;
  * @declare :扫一扫
  */
 
-public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener {
+public class CaptureActivity extends AppCompatActivity implements ActivityI, SurfaceHolder.Callback, View.OnClickListener {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
     public ZxingConfig config;
     private SurfaceView previewView;
     private ViewfinderView viewfinderView;
-    private LinearLayout scanQrcode;
-    private LinearLayout scanPlate;
-    private LinearLayout scanContainer;
-    private LinearLayout openFlash;
-    private TextView message;
-    private TextView scanFailed;
+    private AppCompatImageView flashLightIv;
+    private TextView flashLightTv;
     private AppCompatImageView backIv;
+    private LinearLayoutCompat flashLightLayout;
+    private LinearLayoutCompat albumLayout;
+    private LinearLayoutCompat bottomLayout;
     private boolean hasSurface;
     private InactivityTimer inactivityTimer;
     private BeepManager beepManager;
@@ -65,7 +61,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     private SurfaceHolder surfaceHolder;
 
 
-    public ViewfinderView getViewfinderView() {
+    public View getViewfinderView() {
         return viewfinderView;
     }
 
@@ -77,8 +73,28 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         return cameraManager;
     }
 
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public int getMode() {
+        return ZxingConfig.SCAN_TYPE_QRCODE;
+    }
+
     public void drawViewfinder() {
         viewfinderView.drawViewfinder();
+    }
+
+    @Override
+    public void setActivityResult(int code, Intent intent) {
+        setResult(code, intent);
+    }
+
+    @Override
+    public ZxingConfig getConfig() {
+        return config;
     }
 
 
@@ -101,6 +117,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         try {
             config = (ZxingConfig) getIntent().getExtras().get(Constant.INTENT_ZXING_CONFIG);
         } catch (Exception e) {
+
             Log.i("config", e.toString());
         }
 
@@ -120,44 +137,12 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         beepManager = new BeepManager(this);
         beepManager.setPlayBeep(config.isPlayBeep());
         beepManager.setVibrate(config.isShake());
+
+
     }
 
 
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-        @Override
-        public void onManagerConnected(int status) {
-            switch (status) {
-                case LoaderCallbackInterface.SUCCESS: {
-                    System.loadLibrary("lpr");
-
-//                    Log.i(TAG, "OpenCV loaded successfully");
-//                    mOpenCvCameraView.enableView();
-//                    mOpenCvCameraView.setOnTouchListener(ColorBlobDetectionActivity.this);
-                }
-                break;
-                default: {
-                    super.onManagerConnected(status);
-                }
-                break;
-            }
-        }
-    };
-
-
-
     private void initView() {
-
-        scanFailed = findViewById(R.id.scan_failed);
-        message = findViewById(R.id.message);
-        scanQrcode = findViewById(R.id.scan_qrcode);
-        openFlash = findViewById(R.id.open_flash);
-        scanPlate = findViewById(R.id.scan_plate);
-        scanContainer = findViewById(R.id.scan_container);
-        scanQrcode.setOnClickListener(this);
-        scanPlate.setOnClickListener(this);
-        openFlash.setOnClickListener(this);
-        scanFailed.setOnClickListener(this);
-
         previewView = findViewById(R.id.preview_view);
         previewView.setOnClickListener(this);
 
@@ -168,28 +153,27 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         backIv = findViewById(R.id.backIv);
         backIv.setOnClickListener(this);
 
+        flashLightIv = findViewById(R.id.flashLightIv);
+        flashLightTv = findViewById(R.id.flashLightTv);
 
-        if(config.isShowVerification()){
-            // 显示扫码核销
-            scanContainer.setBackgroundResource(R.drawable.scaner_container_bg);
-            scanQrcode.setVisibility(View.VISIBLE);
+        flashLightLayout = findViewById(R.id.flashLightLayout);
+        flashLightLayout.setOnClickListener(this);
+        albumLayout = findViewById(R.id.albumLayout);
+        albumLayout.setOnClickListener(this);
+        bottomLayout = findViewById(R.id.bottomLayout);
 
-        }else{
-            // 隐藏扫码
-            scanContainer.setBackgroundResource(R.drawable.scaner_item_null_bg);
-            scanQrcode.setVisibility(View.GONE);
+
+        switchVisibility(bottomLayout, config.isShowbottomLayout());
+        switchVisibility(flashLightLayout, config.isShowFlashLight());
+        switchVisibility(albumLayout, config.isShowAlbum());
+
+
+        /*有闪光灯就显示手电筒按钮  否则不显示*/
+        if (isSupportCameraLedFlash(getPackageManager())) {
+            flashLightLayout.setVisibility(View.VISIBLE);
+        } else {
+            flashLightLayout.setVisibility(View.GONE);
         }
-
-
-        if(config.getDefaultScanType() == ZxingConfig.SCAN_TYPE_PLATE){
-            scanQrcode.setBackgroundResource(R.drawable.scaner_item_null_bg);
-            scanPlate.setBackgroundResource(R.drawable.scaner_item_bg);
-
-        }else{
-            scanQrcode.setBackgroundResource(R.drawable.scaner_item_bg);
-            scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
-        }
-
 
     }
 
@@ -216,32 +200,31 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
      * @param flashState 切换闪光灯图片
      */
     public void switchFlashImg(int flashState) {
+        if (flashState == Constant.FLASH_OPEN) {
+            flashLightIv.setImageResource(R.drawable.ic_open);
+            flashLightTv.setText(R.string.close_flash);
+        } else {
+            flashLightIv.setImageResource(R.drawable.ic_close);
+            flashLightTv.setText(R.string.open_flash);
+        }
 
-//        if (flashState == Constant.FLASH_OPEN) {
-//            flashLightIv.setImageResource(R.drawable.ic_open);
-//            flashLightTv.setText(R.string.close_flash);
-//        } else {
-//            flashLightIv.setImageResource(R.drawable.ic_close);
-//            flashLightTv.setText(R.string.open_flash);
-//        }
+    }
 
+    @Override
+    public void finishActivity() {
+        finish();
     }
 
     /**
      * @param rawResult 返回的扫描结果
      */
     public void handleDecode(String rawResult) {
-
         inactivityTimer.onActivity();
-
         beepManager.playBeepSoundAndVibrate();
-
         Intent intent = getIntent();
         intent.putExtra(Constant.CODED_CONTENT, rawResult);
         setResult(RESULT_OK, intent);
         this.finish();
-
-
     }
 
 
@@ -274,12 +257,6 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
 
         beepManager.updatePrefs();
         inactivityTimer.onResume();
-
-        if (!OpenCVLoader.initDebug()) {
-            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_0, this, mLoaderCallback);
-        } else {
-            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
-        }
 
     }
 
@@ -350,15 +327,6 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     }
 
 
-    private void getLocation() {
-        int[] position = new int[2];
-        viewfinderView.getLocationInWindow(position);
-        Log.e("cocoa", "getLocationInWindow:" + position[0] + "," + position[1]);
-        Log.e("cocoa", "getLocationInWindow:" + viewfinderView.getWidth() + "," + viewfinderView.getHeight());
-
-    }
-
-
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         hasSurface = false;
@@ -374,46 +342,20 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     public void onClick(View view) {
 
         int id = view.getId();
-        if (id == R.id.open_flash) {
+        if (id == R.id.flashLightLayout) {
             /*切换闪光灯*/
             cameraManager.switchFlashLight(handler);
+        } else if (id == R.id.albumLayout) {
+            /*打开相册*/
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, Constant.REQUEST_IMAGE);
         } else if (id == R.id.backIv) {
             finish();
-        } else if (id == R.id.scan_qrcode) {
-            scanQrcode.setBackgroundResource(R.drawable.scaner_item_bg);
-            scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
-            setMode(1);
-            getLocation();
-        } else if (id == R.id.scan_plate) {
-            scanQrcode.setBackgroundResource(R.drawable.scaner_item_null_bg);
-            scanPlate.setBackgroundResource(R.drawable.scaner_item_bg);
-            setMode(2);
-            getLocation();
-        }else if(id  == R.id.scan_failed){
-            setResult(RESULT_CANCELED);
-            finish();
         }
-//        else if (id == R.id.albumLayout) {
-//            /*打开相册*/
-//            Intent intent = new Intent();
-//            intent.setAction(Intent.ACTION_PICK);
-//            intent.setType("image/*");
-//            startActivityForResult(intent, Constant.REQUEST_IMAGE);
-//        }
 
 
-    }
-
-    int mode = 1;
-
-    public int getMode() {
-        return mode;
-    }
-
-    private void setMode(int mode) {
-        this.mode = mode;
-        viewfinderView.setMode(mode);
-        message.setText(mode == 2?R.string.scan_plate:R.string.scan_qrcode);
     }
 
 
@@ -425,17 +367,17 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
             String path = ImageUtil.getImageAbsolutePath(this, data.getData());
 
 
-//            new DecodeImgThread(path, new DecodeImgCallback() {
-//                @Override
-//                public void onImageDecodeSuccess(Result result) {
-//                    handleDecode(result);
-//                }
-//
-//                @Override
-//                public void onImageDecodeFailed() {
-//                    Toast.makeText(CaptureActivity.this, R.string.scan_failed_tip, Toast.LENGTH_SHORT).show();
-//                }
-//            }).run();
+            new DecodeImgThread(path, new DecodeImgCallback() {
+                @Override
+                public void onImageDecodeSuccess(Result result) {
+                    handleDecode(result.getText());
+                }
+
+                @Override
+                public void onImageDecodeFailed() {
+                    Toast.makeText(CaptureActivity.this, R.string.scan_failed_tip, Toast.LENGTH_SHORT).show();
+                }
+            }).run();
 
 
         }

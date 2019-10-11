@@ -22,7 +22,7 @@ import android.os.Looper;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPointCallback;
-import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.android.ActivityI;
 import com.yzq.zxinglibrary.camera.CameraManager;
 
 import java.util.Hashtable;
@@ -36,13 +36,13 @@ import java.util.concurrent.CountDownLatch;
  */
 public final class DecodeThread extends Thread {
 
-    private final CaptureActivity activity;
+    private final ActivityI activity;
     private final Hashtable<DecodeHintType, Object> hints;
     private Handler handler;
     private final CountDownLatch handlerInitLatch;
     private CameraManager cameraManager;
 
-    public DecodeThread(CaptureActivity activity, CameraManager cameraManager ,ResultPointCallback resultPointCallback ) {
+    public DecodeThread(ActivityI activity, CameraManager cameraManager , ResultPointCallback resultPointCallback ) {
         this.cameraManager = cameraManager;
         this.activity = activity;
         handlerInitLatch = new CountDownLatch(1);
@@ -52,7 +52,7 @@ public final class DecodeThread extends Thread {
         Vector<BarcodeFormat> decodeFormats = new Vector<BarcodeFormat>();
 
         /*是否解析有条形码（一维码）*/
-        if (activity.config.isDecodeBarCode()) {
+        if (activity.getConfig().isDecodeBarCode()) {
             decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
         }
         decodeFormats.addAll(DecodeFormatManager.DATA_MATRIX_FORMATS);
@@ -61,7 +61,7 @@ public final class DecodeThread extends Thread {
         hints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);
 
         hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
-        hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK, resultPointCallback);
+//        hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK, resultPointCallback);
 
     }
 

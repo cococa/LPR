@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,7 +9,7 @@
         android:id="@+id/brn_lpr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="识别车牌"
+        android:text="zxing二维码扫描"
         app:layout_constraintBottom_toBottomOf="@id/message"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,7 +19,7 @@
         android:id="@+id/qrcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="qrcode"
+        android:text="二维码车牌扫描"
         app:layout_constraintBottom_toBottomOf="@id/brn_lpr"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

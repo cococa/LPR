@@ -10,8 +10,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.cocoa.plater.LPRActivity;
 import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.android.MultipleCaptureActivity;
 import com.yzq.zxinglibrary.bean.ZxingConfig;
 import com.yzq.zxinglibrary.common.Constant;
 
@@ -34,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         message = findViewById(R.id.message);
 
         findViewById(R.id.brn_lpr).setOnClickListener(v -> {
-            startActivityForResult(new Intent(this, LPRActivity.class), REQUEST_LPR_CODE);
+            Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+            ZxingConfig config = new ZxingConfig();
+            config.setFullScreenScan(false);
+            intent.putExtra(Constant.INTENT_ZXING_CONFIG, config);
+            startActivityForResult(intent, REQUEST_CODE_SCAN);
         });
         findViewById(R.id.qrcode).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+            Intent intent = new Intent(MainActivity.this, MultipleCaptureActivity.class);
             ZxingConfig config = new ZxingConfig();
             // config.setPlayBeep(false);//是否播放扫描声音 默认为true
             //  config.setShake(false);//是否震动  默认为true
@@ -75,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 message.setText("扫描结果为：" + content);
             }
         } else if ((requestCode == REQUEST_CODE_SCAN || requestCode == REQUEST_LPR_CODE) && resultCode == RESULT_CANCELED) {
-
                 message.setText("扫描不到？试试手动输入");
-
         }
     }
 

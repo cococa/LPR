@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 //apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.yuzhiqiang1993'
+group = 'com.github.yuzhiqiang1993'
 
 android {
     compileSdkVersion compile_sdk_version
@@ -13,8 +13,6 @@ android {
         versionName version_name
         vectorDrawables.useSupportLibrary = true
     }
-
-
 }
 
 dependencies {
@@ -23,5 +21,7 @@ dependencies {
     compileOnly "com.android.support:design:$android_support"
     compileOnly "com.android.support:support-v4:$android_support"
     compileOnly "com.android.support:support-vector-drawable:$android_support"
-    api project(path: ':Plater')
+//    api project(path: ':Plater')
+    implementation 'com.cocoa.plater:qccr-plater:1.0.1@aar'
+    implementation 'org.opencv:openCV:1.0.1@aar'
 }

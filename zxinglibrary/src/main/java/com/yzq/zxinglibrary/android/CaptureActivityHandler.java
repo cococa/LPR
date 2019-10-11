@@ -21,11 +21,9 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
-import com.google.zxing.Result;
 import com.yzq.zxinglibrary.camera.CameraManager;
 import com.yzq.zxinglibrary.common.Constant;
 import com.yzq.zxinglibrary.decode.DecodeThread;
-import com.yzq.zxinglibrary.view.ViewfinderResultPointCallback;
 
 /**
  * This class handles all the messaging which comprises the state machine for
@@ -38,7 +36,7 @@ public final class CaptureActivityHandler extends Handler {
     private static final String TAG = CaptureActivityHandler.class
             .getSimpleName();
 
-    private final CaptureActivity activity;
+    private final ActivityI activity;
     private final DecodeThread decodeThread;
     private State state;
     private final CameraManager cameraManager;
@@ -47,10 +45,10 @@ public final class CaptureActivityHandler extends Handler {
         PREVIEW, SUCCESS, DONE
     }
 
-    public CaptureActivityHandler(CaptureActivity activity,CameraManager cameraManager) {
+    public CaptureActivityHandler(ActivityI activity,CameraManager cameraManager) {
         this.activity = activity;
-        decodeThread = new DecodeThread(activity, cameraManager, new ViewfinderResultPointCallback(
-                activity.getViewfinderView()));
+
+        decodeThread = new DecodeThread(activity, cameraManager, null);
         decodeThread.start();
         state = State.SUCCESS;
 
@@ -86,8 +84,8 @@ public final class CaptureActivityHandler extends Handler {
                 break;
             case Constant.RETURN_SCAN_RESULT:
 
-                activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
-                activity.finish();
+                activity.setActivityResult(Activity.RESULT_OK, (Intent) message.obj);
+                activity.finishActivity();
                 break;
             case Constant.FLASH_OPEN:
                 activity.switchFlashImg(Constant.FLASH_OPEN);
