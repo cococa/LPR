@@ -84,14 +84,18 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/flash_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_back"></ImageView>
+                        app:srcCompat="@drawable/light_off">
+
+                    </ImageView>
 
                     <TextView
+                        android:id="@+id/flash_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="轻点照亮"
+                        android:text="@string/open_flash"
                         android:textColor="#fff"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -137,7 +141,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_back"></ImageView>
+                    app:srcCompat="@drawable/scan_plate"></ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,7 +165,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_back">
+                    app:srcCompat="@drawable/scan_qrcode">
 
                 </ImageView>
 

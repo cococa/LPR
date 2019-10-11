@@ -100,27 +100,11 @@ public final class ViewfinderViewMutl extends View {
         possibleResultPoints = new ArrayList<ResultPoint>(10);
         lastPossibleResultPoints = null;
         getDefaultDisplay();
-        setD(1);
+//        setScanViewType(1);
     }
 
     private void initPaint() {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        /*四个角的画笔*/
-//        reactPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        reactPaint.setColor(reactColor);
-//        reactPaint.setStyle(Paint.Style.FILL);
-//        reactPaint.setStrokeWidth(dp2px(1));
-//
-//        /*边框线画笔*/
-//
-//        if (frameLineColor != -1) {
-//            frameLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//            frameLinePaint.setColor(ContextCompat.getColor(getContext(), config.getFrameLineColor()));
-//            frameLinePaint.setStrokeWidth(dp2px(1));
-//            frameLinePaint.setStyle(Paint.Style.STROKE);
-//        }
-
 
     }
 
@@ -159,16 +143,16 @@ public final class ViewfinderViewMutl extends View {
     }
 
 
-    public void setMode(int mode) {
+    public void setScanType(int mode) {
         if (p == null) {
             getDefaultDisplay();
         }
-        setD(mode);
+        setScanViewType(mode);
         requestLayout();
     }
 
-    private void setD(int mode) {
-        if (mode == 1) {
+    private void setScanViewType(int mode) {
+        if (mode == ZxingConfig.SCAN_TYPE_QRCODE) {
             this.width_ = (int) (p.x * 0.75);
             this.height_ = width_;
         } else {

@@ -43,13 +43,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.qrcode).setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MultipleCaptureActivity.class);
             ZxingConfig config = new ZxingConfig();
-            // config.setPlayBeep(false);//是否播放扫描声音 默认为true
-            //  config.setShake(false);//是否震动  默认为true
-            // config.setDecodeBarCode(false);//是否扫描条形码 默认为true
-//                                config.setReactColor(R.color.colorAccent);//设置扫描框四个角的颜色 默认为白色
-//                                config.setFrameLineColor(R.color.colorAccent);//设置扫描框边框颜色 默认无色
-//                                config.setScanLineColor(R.color.colorAccent);//设置扫描线的颜色 默认白色
-            config.setFullScreenScan(true);//是否全屏扫描  默认为true  设为false则只会在扫描框中扫描
+            config.setFullScreenScan(true);
             config.setShowVerification(true);
             config.setDefaultScanType(ZxingConfig.SCAN_TYPE_QRCODE);
             intent.putExtra(Constant.INTENT_ZXING_CONFIG, config);
@@ -78,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
                 message.setText("扫描结果为：" + content);
             }
-        } else if ((requestCode == REQUEST_CODE_SCAN || requestCode == REQUEST_LPR_CODE) && resultCode == RESULT_CANCELED) {
+        } else if ((requestCode == REQUEST_CODE_SCAN || requestCode == REQUEST_LPR_CODE) && resultCode == ZxingConfig.SCAN_RESULT_TYPE_FAILED) {
                 message.setText("扫描不到？试试手动输入");
         }
     }

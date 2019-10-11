@@ -18,6 +18,8 @@ public class ZxingConfig implements Serializable {
     public static final int SCAN_TYPE_PLATE = 0x123; // 车牌扫描
     public static final int SCAN_TYPE_QRCODE = 0x223; // 二维码扫描
 
+    public static final int SCAN_RESULT_TYPE_FAILED = 0x323; //
+
 
     /*是否播放声音*/
     private boolean isPlayBeep = true;
@@ -36,7 +38,7 @@ public class ZxingConfig implements Serializable {
     // 是否显示扫码核销
     private boolean showVerification = false;
     // 是否显示扫码核销
-    private int defaultScanType = SCAN_TYPE_PLATE;
+    private int defaultScanType = SCAN_TYPE_QRCODE;
 
 
     /*四个角的颜色*/

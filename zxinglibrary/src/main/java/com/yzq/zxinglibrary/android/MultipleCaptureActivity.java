@@ -18,6 +18,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,6 +52,8 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     private LinearLayout scanContainer;
     private LinearLayout openFlash;
     private TextView message;
+    private TextView flashText;
+    private ImageView flashImg;
     private TextView scanFailed;
     private AppCompatImageView backIv;
     private boolean hasSurface;
@@ -59,7 +62,7 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
     private SurfaceHolder surfaceHolder;
-
+    private int mode = ZxingConfig.SCAN_TYPE_QRCODE;
 
     public View getViewfinderView() {
         return viewfinderView;
@@ -67,7 +70,15 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
 
     @Override
     public void switchFlashImg(int flashState) {
-
+        if (flashState == Constant.FLASH_OPEN) {
+            flashImg.setImageResource(R.drawable.light_on);
+            flashText.setText(R.string.close_flash);
+            flashText.setTextColor(getResources().getColor(R.color.main_color));
+        } else {
+            flashImg.setImageResource(R.drawable.light_off);
+            flashText.setText(R.string.open_flash);
+            flashText.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 
     @Override
@@ -128,20 +139,29 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
         if (config == null) {
             config = new ZxingConfig();
         }
-
-
         setContentView(R.layout.activity_multiple_capture);
-
-
         initView();
-
+        initScanType();
         hasSurface = false;
-
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
         beepManager.setPlayBeep(config.isPlayBeep());
         beepManager.setVibrate(config.isShake());
     }
+
+
+
+    public int getMode() {
+        return mode;
+    }
+
+    private void setScanType(int mode) {
+        this.mode = mode;
+        viewfinderView.setScanType(mode);
+        message.setText(mode == ZxingConfig.SCAN_TYPE_PLATE ? R.string.scan_plate : R.string.scan_qrcode);
+    }
+
+
 
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -169,10 +189,14 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
 
         scanFailed = findViewById(R.id.scan_failed);
         message = findViewById(R.id.message);
+        flashText = findViewById(R.id.flash_text);
+        flashImg = findViewById(R.id.flash_img);
         scanQrcode = findViewById(R.id.scan_qrcode);
         openFlash = findViewById(R.id.open_flash);
         scanPlate = findViewById(R.id.scan_plate);
         scanContainer = findViewById(R.id.scan_container);
+
+
         scanQrcode.setOnClickListener(this);
         scanPlate.setOnClickListener(this);
         openFlash.setOnClickListener(this);
@@ -188,6 +212,10 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
         backIv = findViewById(R.id.backIv);
         backIv.setOnClickListener(this);
 
+    }
+
+    private void initScanType(){
+        setScanType(config.getDefaultScanType());
 
         if (config.isShowVerification()) {
             // 显示扫码核销
@@ -209,9 +237,8 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
             scanQrcode.setBackgroundResource(R.drawable.scaner_item_bg);
             scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
         }
-
-
     }
+
 
 
     /**
@@ -373,31 +400,20 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
         } else if (id == R.id.scan_qrcode) {
             scanQrcode.setBackgroundResource(R.drawable.scaner_item_bg);
             scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
-            setMode(1);
+            setScanType(ZxingConfig.SCAN_TYPE_QRCODE);
             getLocation();
         } else if (id == R.id.scan_plate) {
             scanQrcode.setBackgroundResource(R.drawable.scaner_item_null_bg);
             scanPlate.setBackgroundResource(R.drawable.scaner_item_bg);
-            setMode(2);
+            setScanType(ZxingConfig.SCAN_TYPE_PLATE);
             getLocation();
         } else if (id == R.id.scan_failed) {
-            setResult(RESULT_CANCELED);
+            setResult(ZxingConfig.SCAN_RESULT_TYPE_FAILED);
             finish();
         }
 
     }
 
-    int mode = 1;
-
-    public int getMode() {
-        return mode;
-    }
-
-    private void setMode(int mode) {
-        this.mode = mode;
-        viewfinderView.setMode(mode);
-        message.setText(mode == 2 ? R.string.scan_plate : R.string.scan_qrcode);
-    }
 
 
 }
