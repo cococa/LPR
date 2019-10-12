@@ -45,77 +45,87 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            >
 
-            <TextView
-                android:id="@+id/message"
-                android:layout_marginTop="20dp"
-                android:textColor="#fff"
-                android:text="将二维码置于框内"
-                android:textSize="14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <com.yzq.zxinglibrary.view.ViewfinderViewMutl
-                android:layout_marginTop="30dp"
-                android:id="@+id/viewfinder_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-
-                <LinearLayout
-                    android:id="@+id/open_flash"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_margin="20dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_width="wrap_content"
+        <com.yzq.zxinglibrary.view.ScanView
+            android:id="@+id/scan_view"
+                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="12dp">
+                    />
 
-                    <ImageView
-                        android:id="@+id/flash_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/light_off">
+<!--       <LinearLayout-->
+<!--             android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:orientation="vertical"-->
+<!--            >-->
 
-                    </ImageView>
+<!--            <TextView-->
+<!--                android:id="@+id/message"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:textColor="#fff"-->
+<!--                android:text="将二维码置于框内"-->
+<!--                android:textSize="14sp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"></TextView>-->
 
-                    <TextView
-                        android:id="@+id/flash_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/open_flash"
-                        android:textColor="#fff"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-            </FrameLayout>
-            <TextView
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:background="@drawable/scaner_failed_bg"
-                android:id="@+id/scan_failed"
-                android:layout_marginTop="60dp"
-                android:textColor="#00CC99 "
-                android:text="扫描不到？试试手动输入"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
+<!--            <FrameLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <com.yzq.zxinglibrary.view.ViewfinderViewMutl-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:id="@+id/viewfinder_view"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
 
 
-        </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/open_flash"-->
+<!--                    android:layout_gravity="bottom|center_horizontal"-->
+<!--                    android:layout_margin="20dp"-->
+<!--                    android:layout_marginTop="50dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="12dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/flash_img"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:srcCompat="@drawable/light_off">-->
+
+<!--                    </ImageView>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/flash_text"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/open_flash"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:textSize="14sp" />-->
+<!--                </LinearLayout>-->
+
+<!--            </FrameLayout>-->
+<!--            <TextView-->
+<!--                android:paddingLeft="24dp"-->
+<!--                android:paddingRight="24dp"-->
+<!--                android:paddingTop="14dp"-->
+<!--                android:paddingBottom="14dp"-->
+<!--                android:background="@drawable/scaner_failed_bg"-->
+<!--                android:id="@+id/scan_failed"-->
+<!--                android:layout_marginTop="60dp"-->
+<!--                android:textColor="#00CC99 "-->
+<!--                android:text="扫描不到？试试手动输入"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"></TextView>-->
+
+
+<!--        </LinearLayout>-->
 
 
         <!-- 扫描取景框 -->

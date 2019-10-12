@@ -17,7 +17,7 @@
 rule CXX_COMPILER__lpr
   depfile = $DEP_FILE
   deps = gcc
-  command = D:\android-ndk-r14b\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi --gcc-toolchain=D:/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/android-ndk-r14b/platforms/android-19/arch-arm  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = D:\android-ndk-r14b\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi --gcc-toolchain=D:/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/android-ndk-r14b/platforms/android-17/arch-arm  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -25,7 +25,7 @@ rule CXX_COMPILER__lpr
 # Rule for linking CXX shared library.
 
 rule CXX_SHARED_LIBRARY_LINKER__lpr
-  command = cmd.exe /C "$PRE_LINK && D:\android-ndk-r14b\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi --gcc-toolchain=D:/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/android-ndk-r14b/platforms/android-19/arch-arm -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE @$RSP_FILE  && $POST_BUILD"
+  command = cmd.exe /C "$PRE_LINK && D:\android-ndk-r14b\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=armv7-none-linux-androideabi --gcc-toolchain=D:/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/android-ndk-r14b/platforms/android-17/arch-arm -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE @$RSP_FILE  && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   rspfile = $RSP_FILE
   rspfile_content = $in $LINK_PATH $LINK_LIBRARIES

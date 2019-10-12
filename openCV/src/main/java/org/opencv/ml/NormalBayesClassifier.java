@@ -3,7 +3,10 @@
 //
 package org.opencv.ml;
 
+import java.lang.String;
 import org.opencv.core.Mat;
+import org.opencv.ml.NormalBayesClassifier;
+import org.opencv.ml.StatModel;
 
 // C++: class NormalBayesClassifier
 //javadoc: NormalBayesClassifier

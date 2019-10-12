@@ -1,5 +1,14 @@
 package org.opencv.android;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+import org.opencv.android.CameraGLSurfaceView.CameraTextureListener;
+
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES11Ext;
@@ -7,15 +16,6 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.View;
-
-import org.opencv.android.CameraGLSurfaceView.CameraTextureListener;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 @TargetApi(15)
 public abstract class CameraGLRendererBase implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
@@ -46,21 +46,21 @@ public abstract class CameraGLRendererBase implements GLSurfaceView.Renderer, Su
             + "  gl_FragColor = texture2D(sTexture,texCoord);\n" + "}";
 
     // coord-s
-    private final float[] vertices = {
-            -1, -1,
-            -1, 1,
+    private final float vertices[] = {
+           -1, -1,
+           -1,  1,
             1, -1,
-            1, 1};
-    private final float[] texCoordOES = {
-            0, 1,
-            0, 0,
-            1, 1,
-            1, 0};
-    private final float[] texCoord2D = {
-            0, 0,
-            0, 1,
-            1, 0,
-            1, 1};
+            1,  1 };
+    private final float texCoordOES[] = {
+            0,  1,
+            0,  0,
+            1,  1,
+            1,  0 };
+    private final float texCoord2D[] = {
+            0,  0,
+            0,  1,
+            1,  0,
+            1,  1 };
 
     private int[] texCamera = {0}, texFBO = {0}, texDraw = {0};
     private int[] FBO = {0};

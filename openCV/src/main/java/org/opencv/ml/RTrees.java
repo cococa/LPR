@@ -3,8 +3,11 @@
 //
 package org.opencv.ml;
 
+import java.lang.String;
 import org.opencv.core.Mat;
 import org.opencv.core.TermCriteria;
+import org.opencv.ml.DTrees;
+import org.opencv.ml.RTrees;
 
 // C++: class RTrees
 //javadoc: RTrees

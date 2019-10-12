@@ -52,7 +52,7 @@
     "buildTargetSet": []
   },
   "abi": "ARMEABI_V7A",
-  "abiPlatformVersion": 19,
+  "abiPlatformVersion": 17,
   "cxxBuildFolder": "F:\\demo\\LPR\\Plater\\.cxx\\cmake\\debug\\armeabi-v7a",
   "jsonFile": "F:\\demo\\LPR\\Plater\\.cxx\\cmake\\debug\\armeabi-v7a\\android_gradle_build.json",
   "gradleBuildOutputFolder": "F:\\demo\\LPR\\Plater\\.cxx\\cxx\\debug\\armeabi-v7a",

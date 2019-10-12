@@ -53,6 +53,7 @@ public final class CameraManager {
     private AutoFocusManager autoFocusManager;
     private Rect framingRect;
     private Rect framingRectInPreview;
+    private Rect palteRect;
     private boolean initialized;
     private boolean previewing;
     private int requestedCameraId = -1;
@@ -259,7 +260,6 @@ public final class CameraManager {
             int width = (int) (screenResolutionX * 0.6);
             int height = width;
 
-
             /*水平居中  偏上显示*/
             int leftOffset = (screenResolution.x - width) / 2;
             int topOffset = (screenResolution.y - height) / 5;
@@ -269,6 +269,32 @@ public final class CameraManager {
             Log.d(TAG, "Calculated framing rect: " + framingRect);
         }
         return framingRect;
+    }
+
+
+    public synchronized Rect getPlateRect() {
+        if (palteRect == null) {
+            if (camera == null) {
+                return null;
+            }
+            Point screenResolution = configManager.getScreenResolution();
+            if (screenResolution == null) {
+                // Called early, before init even finished
+                return null;
+            }
+            int screenResolutionX = screenResolution.x;
+
+            int width = screenResolutionX;
+            int height = (int) (width * 0.6);
+
+            /*水平居中  偏上显示*/
+            int leftOffset = 0;
+            int topOffset = 250;
+
+            palteRect = new Rect(leftOffset, topOffset , leftOffset + width,
+                    topOffset + height);
+        }
+        return palteRect;
     }
 
 

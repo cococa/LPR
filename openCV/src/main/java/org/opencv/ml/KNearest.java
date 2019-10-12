@@ -4,6 +4,8 @@
 package org.opencv.ml;
 
 import org.opencv.core.Mat;
+import org.opencv.ml.KNearest;
+import org.opencv.ml.StatModel;
 
 // C++: class KNearest
 //javadoc: KNearest

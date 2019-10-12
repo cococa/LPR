@@ -3,6 +3,10 @@
 //
 package org.opencv.ml;
 
+import java.lang.String;
+import org.opencv.ml.Boost;
+import org.opencv.ml.DTrees;
+
 // C++: class Boost
 //javadoc: Boost
 

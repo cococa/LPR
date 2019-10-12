@@ -3,6 +3,8 @@
 //
 package org.opencv.ml;
 
+import org.opencv.ml.ANN_MLP;
+
 // C++: class ANN_MLP_ANNEAL
 //javadoc: ANN_MLP_ANNEAL
 

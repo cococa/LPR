@@ -1,0 +1,3 @@
+F:/demo/LPR/Plater/.cxx/cmake/debug/armeabi/CMakeFiles/lpr.dir
+F:/demo/LPR/Plater/.cxx/cmake/debug/armeabi/CMakeFiles/edit_cache.dir
+F:/demo/LPR/Plater/.cxx/cmake/debug/armeabi/CMakeFiles/rebuild_cache.dir

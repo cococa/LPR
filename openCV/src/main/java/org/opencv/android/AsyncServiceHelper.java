@@ -1,5 +1,11 @@
 package org.opencv.android;
 
+import java.io.File;
+import java.util.StringTokenizer;
+
+import org.opencv.core.Core;
+import org.opencv.engine.OpenCVEngineInterface;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -8,12 +14,6 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
-
-import org.opencv.core.Core;
-import org.opencv.engine.OpenCVEngineInterface;
-
-import java.io.File;
-import java.util.StringTokenizer;
 
 class AsyncServiceHelper
 {
@@ -211,7 +211,7 @@ class AsyncServiceHelper
                                             mUserAppCallback.onManagerConnected(LoaderCallbackInterface.MARKET_ERROR);
                                         }
                                     } catch (RemoteException e) {
-                                        e.printStackTrace();
+                                        e.printStackTrace();;
                                         Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.INIT_FAILED);
                                         Log.d(TAG, "Unbind from service");
                                         mAppContext.unbindService(mServiceConnection);

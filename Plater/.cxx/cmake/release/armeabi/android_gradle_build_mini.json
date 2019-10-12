@@ -1,0 +1,23 @@
+{
+  "buildFiles": [
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig-version.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\OpenCVConfig.cmake",
+    "D:\\android-ndk-r14b\\build\\cmake\\android.toolchain.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi\\OpenCVConfig.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi\\OpenCVModules.cmake",
+    "D:\\OpenCV-android-sdk\\sdk\\native\\jni\\abi-armeabi\\OpenCVModules-release.cmake",
+    "F:\\demo\\LPR\\Plater\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\Plater\\.cxx\\cmake\\release\\armeabi\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\Plater\\.cxx\\cmake\\release\\armeabi\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "lpr-Release-armeabi": {
+      "artifactName": "lpr",
+      "buildCommand": "D:\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"F:\\demo\\LPR\\Plater\\.cxx\\cmake\\release\\armeabi\" lpr",
+      "abi": "armeabi",
+      "output": "F:\\demo\\LPR\\Plater\\build\\intermediates\\cmake\\release\\obj\\armeabi\\liblpr.so"
+    }
+  }
+}

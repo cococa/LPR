@@ -3,6 +3,8 @@
 //
 package org.opencv.video;
 
+import org.opencv.video.BackgroundSubtractor;
+
 // C++: class BackgroundSubtractorKNN
 //javadoc: BackgroundSubtractorKNN
 

@@ -3,6 +3,8 @@
 //
 package org.opencv.videoio;
 
+import java.lang.String;
+
 // C++: class Videoio
 //javadoc: Videoio
 

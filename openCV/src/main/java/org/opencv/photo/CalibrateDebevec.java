@@ -3,6 +3,8 @@
 //
 package org.opencv.photo;
 
+import org.opencv.photo.CalibrateCRF;
+
 // C++: class CalibrateDebevec
 //javadoc: CalibrateDebevec
 

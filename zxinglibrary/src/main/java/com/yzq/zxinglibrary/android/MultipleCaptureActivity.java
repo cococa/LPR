@@ -18,14 +18,13 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.yzq.zxinglibrary.R;
 import com.yzq.zxinglibrary.bean.ZxingConfig;
 import com.yzq.zxinglibrary.camera.CameraManager;
 import com.yzq.zxinglibrary.common.Constant;
+import com.yzq.zxinglibrary.view.ScanView;
 import com.yzq.zxinglibrary.view.ViewfinderViewMutl;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -46,15 +45,10 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     private static final String TAG = MultipleCaptureActivity.class.getSimpleName();
     public ZxingConfig config;
     private SurfaceView previewView;
-    private ViewfinderViewMutl viewfinderView;
+    private ScanView scanView;
     private LinearLayout scanQrcode;
     private LinearLayout scanPlate;
     private LinearLayout scanContainer;
-    private LinearLayout openFlash;
-    private TextView message;
-    private TextView flashText;
-    private ImageView flashImg;
-    private TextView scanFailed;
     private AppCompatImageView backIv;
     private boolean hasSurface;
     private InactivityTimer inactivityTimer;
@@ -65,20 +59,12 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     private int mode = ZxingConfig.SCAN_TYPE_QRCODE;
 
     public View getViewfinderView() {
-        return viewfinderView;
+        return scanView;
     }
 
     @Override
     public void switchFlashImg(int flashState) {
-        if (flashState == Constant.FLASH_OPEN) {
-            flashImg.setImageResource(R.drawable.light_on);
-            flashText.setText(R.string.close_flash);
-            flashText.setTextColor(getResources().getColor(R.color.main_color));
-        } else {
-            flashImg.setImageResource(R.drawable.light_off);
-            flashText.setText(R.string.open_flash);
-            flashText.setTextColor(getResources().getColor(R.color.white));
-        }
+        scanView.setFlashSwitch(flashState == Constant.FLASH_OPEN);
     }
 
     @Override
@@ -100,7 +86,7 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     }
 
     public void drawViewfinder() {
-        viewfinderView.drawViewfinder();
+//        viewfinderView.drawViewfinder();
     }
 
     @Override
@@ -150,18 +136,14 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     }
 
 
-
     public int getMode() {
         return mode;
     }
 
     private void setScanType(int mode) {
         this.mode = mode;
-        viewfinderView.setScanType(mode);
-        message.setText(mode == ZxingConfig.SCAN_TYPE_PLATE ? R.string.scan_plate : R.string.scan_qrcode);
+        scanView.setScanType(mode);
     }
-
-
 
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -187,34 +169,29 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
 
     private void initView() {
 
-        scanFailed = findViewById(R.id.scan_failed);
-        message = findViewById(R.id.message);
-        flashText = findViewById(R.id.flash_text);
-        flashImg = findViewById(R.id.flash_img);
         scanQrcode = findViewById(R.id.scan_qrcode);
-        openFlash = findViewById(R.id.open_flash);
         scanPlate = findViewById(R.id.scan_plate);
         scanContainer = findViewById(R.id.scan_container);
 
 
         scanQrcode.setOnClickListener(this);
         scanPlate.setOnClickListener(this);
-        openFlash.setOnClickListener(this);
-        scanFailed.setOnClickListener(this);
 
         previewView = findViewById(R.id.preview_view);
         previewView.setOnClickListener(this);
 
-        viewfinderView = findViewById(R.id.viewfinder_view);
-        viewfinderView.setZxingConfig(config);
+        scanView = findViewById(R.id.scan_view);
+        scanView.setOnClickListener(this);
+//        viewfinderView.setZxingConfig(config);
 
 
         backIv = findViewById(R.id.backIv);
         backIv.setOnClickListener(this);
 
+
     }
 
-    private void initScanType(){
+    private void initScanType() {
         setScanType(config.getDefaultScanType());
 
         if (config.isShowVerification()) {
@@ -238,7 +215,6 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
             scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
         }
     }
-
 
 
     /**
@@ -279,7 +255,7 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
 
         cameraManager = new CameraManager(getApplication(), config);
 
-        viewfinderView.setCameraManager(cameraManager);
+        scanView.setCameraManager(cameraManager);
         handler = null;
 
         surfaceHolder = previewView.getHolder();
@@ -336,8 +312,6 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
 
     @Override
     protected void onPause() {
-
-        Log.i("CaptureActivity", "onPause");
         if (handler != null) {
             handler.quitSynchronously();
             handler = null;
@@ -347,7 +321,6 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
         cameraManager.closeDriver();
 
         if (!hasSurface) {
-
             surfaceHolder.removeCallback(this);
         }
         super.onPause();
@@ -356,7 +329,7 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
     @Override
     protected void onDestroy() {
         inactivityTimer.shutdown();
-        viewfinderView.stopAnimator();
+//        viewfinderView.stopAnimator();
         super.onDestroy();
     }
 
@@ -366,15 +339,6 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
             hasSurface = true;
             initCamera(holder);
         }
-    }
-
-
-    private void getLocation() {
-        int[] position = new int[2];
-        viewfinderView.getLocationInWindow(position);
-        Log.e("cocoa", "getLocationInWindow:" + position[0] + "," + position[1]);
-        Log.e("cocoa", "getLocationInWindow:" + viewfinderView.getWidth() + "," + viewfinderView.getHeight());
-
     }
 
 
@@ -401,19 +365,17 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
             scanQrcode.setBackgroundResource(R.drawable.scaner_item_bg);
             scanPlate.setBackgroundResource(R.drawable.scaner_item_null_bg);
             setScanType(ZxingConfig.SCAN_TYPE_QRCODE);
-            getLocation();
+
         } else if (id == R.id.scan_plate) {
             scanQrcode.setBackgroundResource(R.drawable.scaner_item_null_bg);
             scanPlate.setBackgroundResource(R.drawable.scaner_item_bg);
             setScanType(ZxingConfig.SCAN_TYPE_PLATE);
-            getLocation();
         } else if (id == R.id.scan_failed) {
             setResult(ZxingConfig.SCAN_RESULT_TYPE_FAILED);
             finish();
         }
 
     }
-
 
 
 }

@@ -3,6 +3,9 @@
 //
 package org.opencv.calib3d;
 
+import org.opencv.calib3d.StereoMatcher;
+import org.opencv.calib3d.StereoSGBM;
+
 // C++: class StereoSGBM
 //javadoc: StereoSGBM
 

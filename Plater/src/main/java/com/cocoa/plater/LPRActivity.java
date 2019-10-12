@@ -18,12 +18,12 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
+import org.plater.android.BaseLoaderCallback;
+import org.plater.android.LoaderCallbackInterface;
+import org.plater.android.OpenCVLoader;
+import org.plater.android.Utils;
+import org.plater.core.CvType;
+import org.plater.core.Mat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

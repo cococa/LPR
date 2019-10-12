@@ -3,10 +3,11 @@
 //
 package org.opencv.photo;
 
-import org.opencv.core.Mat;
-import org.opencv.utils.Converters;
-
+import java.util.ArrayList;
 import java.util.List;
+import org.opencv.core.Mat;
+import org.opencv.photo.MergeExposures;
+import org.opencv.utils.Converters;
 
 // C++: class MergeDebevec
 //javadoc: MergeDebevec

@@ -10,5 +10,6 @@
     <string name="scan_failed_tip">图片解析失败，换个图片试试.</string>
     <string name="scan_plate">将车牌置于框内</string>
     <string name="scan_qrcode">将二维码置于框内</string>
+    <string name="scan_failed_text">扫描不到？试试手动输入</string>
 
 </resources>

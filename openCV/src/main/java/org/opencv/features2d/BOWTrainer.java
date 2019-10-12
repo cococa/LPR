@@ -3,11 +3,10 @@
 //
 package org.opencv.features2d;
 
-import org.opencv.core.Mat;
-import org.opencv.utils.Converters;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.opencv.core.Mat;
+import org.opencv.utils.Converters;
 
 // C++: class BOWTrainer
 //javadoc: BOWTrainer

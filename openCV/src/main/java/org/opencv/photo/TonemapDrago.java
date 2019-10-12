@@ -3,6 +3,8 @@
 //
 package org.opencv.photo;
 
+import org.opencv.photo.Tonemap;
+
 // C++: class TonemapDrago
 //javadoc: TonemapDrago
 

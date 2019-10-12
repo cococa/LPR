@@ -3,6 +3,9 @@
 //
 package org.opencv.imgproc;
 
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfInt;
@@ -15,10 +18,9 @@ import org.opencv.core.RotatedRect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.TermCriteria;
+import org.opencv.imgproc.CLAHE;
+import org.opencv.imgproc.LineSegmentDetector;
 import org.opencv.utils.Converters;
-
-import java.util.ArrayList;
-import java.util.List;
 
 // C++: class Imgproc
 //javadoc: Imgproc
@@ -758,7 +760,7 @@ public class Imgproc {
     {
         double[] response_out = new double[1];
         Point retVal = new Point(phaseCorrelate_0(src1.nativeObj, src2.nativeObj, window.nativeObj, response_out));
-        if(response!=null) response[0] = response_out[0];
+        if(response!=null) response[0] = (double)response_out[0];
         return retVal;
     }
 
@@ -3971,7 +3973,7 @@ public class Imgproc {
 //javadoc:getTextSize(text, fontFace, fontScale, thickness, baseLine)
 public static Size getTextSize(String text, int fontFace, double fontScale, int thickness, int[] baseLine) {
     if(baseLine != null && baseLine.length != 1)
-        throw new java.lang.IllegalArgumentException("'baseLine' must be 'int[1]' or 'null'.");
+        throw new IllegalArgumentException("'baseLine' must be 'int[1]' or 'null'.");
     Size retVal = new Size(n_getTextSize(text, fontFace, fontScale, thickness, baseLine));
     return retVal;
 }

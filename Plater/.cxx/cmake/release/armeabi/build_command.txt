@@ -1,0 +1,20 @@
+Executable : D:\Sdk\cmake\3.10.2.4988404\bin\cmake.exe
+arguments : 
+-HF:\demo\LPR\Plater
+-BF:\demo\LPR\Plater\.cxx\cmake\release\armeabi
+-DANDROID_ABI=armeabi
+-DANDROID_PLATFORM=android-17
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=F:\demo\LPR\Plater\build\intermediates\cmake\release\obj\armeabi
+-DCMAKE_BUILD_TYPE=Release
+-DANDROID_NDK=D:\android-ndk-r14b
+-DCMAKE_CXX_FLAGS=-std=gnu++11
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_ANDROID_ARCH_ABI=armeabi
+-DCMAKE_SYSTEM_VERSION=17
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_ANDROID_NDK=D:\android-ndk-r14b
+-DCMAKE_TOOLCHAIN_FILE=F:\demo\LPR\Plater\.cxx\cmake\release\armeabi\pre-ndk-r15-wrapper-android.toolchain.cmake
+-G Ninja
+-DCMAKE_MAKE_PROGRAM=D:\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
+jvmArgs : 
+

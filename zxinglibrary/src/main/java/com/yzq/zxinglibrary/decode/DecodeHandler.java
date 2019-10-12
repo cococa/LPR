@@ -155,17 +155,16 @@ public final class DecodeHandler extends Handler {
                 Bitmap bitmap = Bitmap.createBitmap(bmp, 0, 0,
                         width, height, matrix, true);
 
-                Rect destrect = cameraManager.getFramingRect();
+//                Rect destrect = cameraManager.getPlateRect();
 
                 Rect rect = new Rect();
-                rect.top = (int) (destrect.top * 0.75);
-                rect.left = (int) (destrect.left * 0.75);
-                rect.right = (int) (destrect.right * 0.75);
-                rect.bottom = (int) (destrect.bottom * 0.75);
+                rect.top = 250;
+                rect.left = 0;
+                rect.right = bitmap.getWidth();
+                rect.bottom = rect.top + (int) (bitmap.getWidth() * 0.6);
                 Log.e("cocoa", "cocoa " + rect.left + "-" + rect.top + "-" + rect.right + "-" + rect.bottom + "   width=" + bitmap.getWidth() + "  height=" + bitmap.getHeight());
 
-
-                bitmap = Bitmap.createBitmap(bitmap, 0, rect.top, bitmap.getWidth(), rect.bottom - rect.top + 300, null, false);
+                bitmap = Bitmap.createBitmap(bitmap, 0, rect.top, bitmap.getWidth(), rect.bottom, null, false);
 
                 File appDir = new File(Environment.getExternalStorageDirectory() + "/A001");
                 if (!appDir.exists()) {

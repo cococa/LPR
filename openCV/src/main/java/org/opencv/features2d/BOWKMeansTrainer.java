@@ -5,6 +5,7 @@ package org.opencv.features2d;
 
 import org.opencv.core.Mat;
 import org.opencv.core.TermCriteria;
+import org.opencv.features2d.BOWTrainer;
 
 // C++: class BOWKMeansTrainer
 //javadoc: BOWKMeansTrainer

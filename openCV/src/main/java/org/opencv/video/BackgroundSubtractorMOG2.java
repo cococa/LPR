@@ -4,6 +4,7 @@
 package org.opencv.video;
 
 import org.opencv.core.Mat;
+import org.opencv.video.BackgroundSubtractor;
 
 // C++: class BackgroundSubtractorMOG2
 //javadoc: BackgroundSubtractorMOG2
