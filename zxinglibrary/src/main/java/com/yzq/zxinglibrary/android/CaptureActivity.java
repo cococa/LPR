@@ -113,20 +113,14 @@ public class CaptureActivity extends AppCompatActivity implements ActivityI, Sur
             window.setStatusBarColor(Color.BLACK);
         }
 
-        /*先获取配置信息*/
-        try {
-            config = (ZxingConfig) getIntent().getExtras().get(Constant.INTENT_ZXING_CONFIG);
-        } catch (Exception e) {
+        setContentView(R.layout.activity_capture);
 
-            Log.i("config", e.toString());
-        }
+        config = getIntent().getParcelableExtra(Constant.INTENT_ZXING_CONFIG);
 
         if (config == null) {
             config = new ZxingConfig();
         }
 
-
-        setContentView(R.layout.activity_capture);
 
 
         initView();

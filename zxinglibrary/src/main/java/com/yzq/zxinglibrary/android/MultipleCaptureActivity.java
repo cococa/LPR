@@ -115,17 +115,14 @@ public class MultipleCaptureActivity extends AppCompatActivity implements Activi
             window.setStatusBarColor(Color.BLACK);
         }
 
-        /*先获取配置信息*/
-        try {
-            config = (ZxingConfig) getIntent().getExtras().get(Constant.INTENT_ZXING_CONFIG);
-        } catch (Exception e) {
-            Log.i("config", e.toString());
-        }
+        setContentView(R.layout.activity_multiple_capture);
+
+        config = getIntent().getParcelableExtra(Constant.INTENT_ZXING_CONFIG);
 
         if (config == null) {
             config = new ZxingConfig();
         }
-        setContentView(R.layout.activity_multiple_capture);
+
         initView();
         initScanType();
         hasSurface = false;
